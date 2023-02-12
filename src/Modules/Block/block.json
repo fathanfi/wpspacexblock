@@ -13,6 +13,18 @@
 		"allPost": {
 			"type": "object",
 			"default": ""
+		},
+		"isLoading": {
+			"type": "boolean",
+			"default": false
+		},
+		"pageItems": {
+			"type": "integer",
+			"default": 6
+		},
+		"currentPage": {
+			"type": "integer",
+			"default": 1
 		}
 	},
 	"textdomain": "wp-spacex-block",
