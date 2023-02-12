@@ -7,11 +7,13 @@ import apiFetch from '@wordpress/api-fetch';
 /**
  * Internal dependencies
  */
+import SearchBox from './components/common/searchBox';
 import PostsGrid from './components/postsGrid';
 import Pagination from './components/common/pagination';
 import { paginate } from './utils/paginate';
 
 function DataPostGrid( props ) {
+	const [ searchQuery, setSearchQuery ] = useState( '' );
 	const [ loaded ] = useState( true );
 	const [ currentPage, setCurrentPage ] = useState( 1 );
 	const [ allPosts ] = useState( props.allPosts );
@@ -19,6 +21,13 @@ function DataPostGrid( props ) {
 
 	//Paginate & Sort
 	let filtered = allPosts;
+	if ( searchQuery ) {
+		filtered = allPosts?.filter( ( post ) =>
+			post.mission_name
+				.toLowerCase()
+				.startsWith( searchQuery.toLowerCase() )
+		);
+	}
 
 	const sorted = _.orderBy( filtered );
 	const userPosts = paginate( sorted, currentPage, pageItems );
@@ -30,6 +39,12 @@ function DataPostGrid( props ) {
 		</div>
 	);
 
+	//Handlers
+	const handleSearch = ( query ) => {
+		setSearchQuery( query );
+		setCurrentPage( 1 );
+	};
+
 	const handlePageChange = ( page ) => {
 		setCurrentPage( page );
 	};
@@ -40,6 +55,7 @@ function DataPostGrid( props ) {
 			<div className="col">
 				{ loaded && <p>You have { countPosts } posts</p> }
 
+				<SearchBox value={ searchQuery } onChange={ handleSearch } />
 				<PostsGrid
 					items={ userPosts }
 					itemsCount={ countPosts }
