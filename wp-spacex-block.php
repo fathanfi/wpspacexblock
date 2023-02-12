@@ -18,3 +18,8 @@ const MAIN_FILE = __FILE__;
 const MAIN_DIR  = __DIR__;
 
 require MAIN_DIR . '/vendor/autoload.php';
+
+/**
+ * Initialize modules
+ */
+Modules\Block\Block::register();
