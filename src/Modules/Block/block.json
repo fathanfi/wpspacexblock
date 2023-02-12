@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "ffi/wp-spacex-block",
+	"version": "0.1.0",
+	"title": "Spacex Posts Grid",
+	"category": "text",
+	"description": "A block to show the spacex data from external API",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"allPost": {
+			"type": "object",
+			"default": ""
+		},
+		"isLoading": {
+			"type": "boolean",
+			"default": false
+		},
+		"pageItems": {
+			"type": "integer",
+			"default": 6
+		},
+		"currentPage": {
+			"type": "integer",
+			"default": 1
+		},
+		"searchQuery": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "wp-spacex-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./index.css",
+	"viewScript": "file:./frontend.js"
+}
