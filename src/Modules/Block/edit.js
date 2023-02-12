@@ -7,8 +7,10 @@ import _ from 'lodash';
  */
 import { useEffect, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
+import { useDispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import { useBlockProps } from '@wordpress/block-editor';
+import { store as noticesStore } from '@wordpress/notices';
 /**
  * Internal dependencies
  */
@@ -24,6 +26,8 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const [ loaded ] = useState( true );
 
+	const { createErrorNotice } = useDispatch( noticesStore );
+
 	const urlRequest = `brainstorm/v1/spacexproxy`;
 
 	useEffect( () => {
@@ -37,7 +41,20 @@ export default function Edit( { attributes, setAttributes } ) {
 					allPosts: response,
 				} );
 			} catch ( err ) {
-				console.log( err );
+				createErrorNotice(
+					sprintf(
+						// Translators: %s: Error message
+						__(
+							'Something went wrong when retrieving spacex data(s): %s',
+							'wp-spacex-block'
+						),
+						err.message
+					),
+					{
+						type: 'snackbar',
+						explicitDismiss: true,
+					}
+				);
 			}
 		}
 		getSpacexData();
