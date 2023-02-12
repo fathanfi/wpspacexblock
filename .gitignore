@@ -1,0 +1,5 @@
+# Dependency directories
+vendor/
+
+# Optional eslint cache
+.eslintcache
