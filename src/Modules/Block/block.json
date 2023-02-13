@@ -20,7 +20,7 @@
 		},
 		"pageItems": {
 			"type": "integer",
-			"default": 6
+			"default": 8
 		},
 		"currentPage": {
 			"type": "integer",
