@@ -21,3 +21,6 @@ https://api.spacexdata.com/v3/capsules
 
 API for rockets
 https://api.spacexdata.com/v3/rockets
+
+Issue, History and Results summary can be see here
+https://github.com/fathanfi/wpspacexblock/issues/1
