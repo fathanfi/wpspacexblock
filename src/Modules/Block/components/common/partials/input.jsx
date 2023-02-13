@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { Component } from 'react';
+import React from 'react';
 
 const Input = ( props ) => {
 	const { name, ...rest } = props;

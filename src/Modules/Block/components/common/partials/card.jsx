@@ -35,17 +35,12 @@ class GridList extends Component {
 											<div className="card__year">
 												{ item.launch_year }
 											</div>
-											<h3 className="card__header">
+											<h3 className="card__header card__text-cutted">
 												{ item.mission_name }
 											</h3>
-											<p className="card__text">
-												{
-													item.launch_site
-														.site_name_long
-												}
-											</p>
 											<button className="card__btn">
-												Explore <span>&rarr;</span>
+												{ __( 'Explore.', 'wp-spacex-block' ) }
+												<span>&rarr;</span>
 											</button>
 										</div>
 									</div>
