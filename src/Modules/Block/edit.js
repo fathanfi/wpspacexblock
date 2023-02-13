@@ -24,7 +24,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	const { pageItems, currentPage, searchQuery, allPosts } =
 		attributes;
 
-	const [ loaded ] = useState( true );
+	const [ loaded, setLoaded ] = useState( false );
 
 	const { createErrorNotice } = useDispatch( noticesStore );
 
@@ -40,6 +40,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				setAttributes( {
 					allPosts: response,
 				} );
+				setLoaded( true );
 			} catch ( err ) {
 				createErrorNotice(
 					sprintf(
@@ -55,6 +56,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						explicitDismiss: true,
 					}
 				);
+				setLoaded( true );
 			}
 		}
 		getSpacexData();

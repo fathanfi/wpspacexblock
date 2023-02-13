@@ -5,7 +5,7 @@ import _ from 'lodash';
 /**
  * WordPress dependencies
  */
-import { render, useState } from '@wordpress/element';
+import { render, useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 /**
  * Internal dependencies
@@ -17,12 +17,18 @@ import { paginate } from './utils/paginate';
 
 function DataPostGrid( props ) {
 	const [ searchQuery, setSearchQuery ] = useState( '' );
-	const [ loaded ] = useState( true );
+	const [ loaded, setLoaded ] = useState( false );
 	const [ currentPage, setCurrentPage ] = useState( 1 );
 	const [ allPosts ] = useState( props.allPosts );
 	const { pageItems } = props;
 
 	//Paginate & Sort
+	useEffect( () => {
+		if ( allPosts.length !== 0 ) {
+			setLoaded( true );
+		}
+	}, [ allPosts.length ] );
+
 	let filtered = allPosts;
 	if ( searchQuery ) {
 		filtered = allPosts?.filter( ( post ) =>
@@ -56,7 +62,10 @@ function DataPostGrid( props ) {
 	return (
 		<div className="row">
 			<div className="col">
-				{ loaded && <p>You have { countPosts } posts</p> }
+				{
+					loaded &&
+					<p>You have { countPosts } posts</p>
+				}
 
 				<SearchBox value={ searchQuery } onChange={ handleSearch } />
 				<PostsGrid
