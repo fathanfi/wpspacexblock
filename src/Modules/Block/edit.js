@@ -3,7 +3,7 @@
  */
 import _ from 'lodash';
 /**
- * Wordpress dependencies
+ * WordPress dependencies
  */
 import { useEffect, useState } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';

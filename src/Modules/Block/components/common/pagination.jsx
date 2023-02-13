@@ -26,8 +26,11 @@ const Pagination = ( props ) => {
 							}
 						>
 							<span
+								role="button"
+								tabIndex={ 0 }
 								className="page-link"
 								onClick={ () => onPageChange( page ) }
+								onKeyDown={ () => onPageChange( page ) }
 							>
 								{ page }
 							</span>

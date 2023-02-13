@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 /**
  * WordPress dependencies
  */
-import _ from 'lodash';
 import { __ } from '@wordpress/i18n';
 import 'bootstrap/dist/css/bootstrap.css';
 

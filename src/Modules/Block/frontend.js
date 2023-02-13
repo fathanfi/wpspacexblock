@@ -2,6 +2,9 @@
  * External dependencies
  */
 import _ from 'lodash';
+/**
+ * WordPress dependencies
+ */
 import { render, useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 /**
