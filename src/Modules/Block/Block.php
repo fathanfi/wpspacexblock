@@ -55,7 +55,6 @@ final class Block implements Module {
 	 * @return bool Whether user is a Admin/Editor.
 	 */
 	public static function proxy_spacex_oembed_security() : bool {
-		return true;
 		return current_user_can( 'manage_options' );
 	}
 
